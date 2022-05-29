@@ -36,6 +36,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   dots_indicator : ^1.2.0
   google_fonts: ^3.0.1
+  onboarding: ^3.1.0
+  smooth_page_indicator: ^1.0.0+2
 
 dev_dependencies:
   flutter_test:
@@ -76,11 +78,11 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-   - family: Poppins
-     fonts:
+#  fonts:
+#   - family: Poppins
+#     fonts:
 #        - asset: fonts/Poppins-Regular.ttf
-        - asset: fonts/
+#        - asset: fonts/
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
