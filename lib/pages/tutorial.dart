@@ -25,7 +25,7 @@ class _TutorialState extends State<Tutorial> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    "blablabla",
+                    "blablablaaaa",
                     style: TextStyle(
                       fontSize: 20
                     ),
