@@ -19,19 +19,20 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: Container(
         child: Column(
           children: <Widget>[
-            Container(
-              height: 0.1 * size.height,
+            Expanded(
+              flex: 3,
               child: Container(
                 color: Colors.blue,
               ),
             ),
-            Container(
+            Expanded(
+              flex: 18,
               child: Container(
-                  height: 0.9 * size.height,
                   color: Colors.white,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -92,9 +93,9 @@ class _LoginState extends State<Login> {
                               darkMode: false,
                               style: AuthButtonStyle(
                                 buttonType: AuthButtonType.icon,
-                                height: 30,
-                                width: 30.0,
-                                iconSize: 20.0,
+                                height: 35,
+                                width: 35.0,
+                                iconSize: 25.0,
                               ),
                             ),
                             SizedBox(
@@ -105,9 +106,9 @@ class _LoginState extends State<Login> {
                               darkMode: false,
                               style: AuthButtonStyle(
                                 buttonType: AuthButtonType.icon,
-                                height: 30,
-                                width: 30.0,
-                                iconSize: 20.0,
+                                height: 35,
+                                width: 35.0,
+                                iconSize: 25.0,
                               ),
                             ),
                             SizedBox(
