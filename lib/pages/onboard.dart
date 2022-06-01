@@ -201,11 +201,15 @@ class _OnboardState extends State<Onboard> {
                     borderRadius: BorderRadius.circular(50.0),
                   )),
               onPressed: () {
+                if (counter == 2) {
+                  Navigator.pushNamed(context, '/login');
+                }
                 setState(() {
                   if (counter < 2) {
                     counter += 1;
                   }
                 });
+
                 controller.nextPage(
                   duration: const Duration(milliseconds: 500),
                   curve: Curves.easeInOut,
