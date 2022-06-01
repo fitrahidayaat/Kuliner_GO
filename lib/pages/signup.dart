@@ -7,14 +7,14 @@ import 'package:kuliner_go/components/rounded_input_field.dart';
 import 'package:kuliner_go/components/rounded_password_field.dart';
 import 'package:auth_buttons/auth_buttons.dart';
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class Signup extends StatefulWidget {
+  const Signup({Key? key}) : super(key: key);
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Signup> createState() => _SignupState();
 }
 
-class _LoginState extends State<Login> {
+class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -40,7 +40,7 @@ class _LoginState extends State<Login> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text("Masuk",
+                          Text("Daftar",
                               style: GoogleFonts.poppins(
                                 textStyle: TextStyle(
                                   fontSize: 17,
@@ -50,7 +50,7 @@ class _LoginState extends State<Login> {
                           SizedBox(
                             height: 10.0,
                           ),
-                          Text("Masukkan email dan kata sandi akunmu",
+                          Text("Silahkan isi kelengkapan akunmu di bawah ini",
                               style: GoogleFonts.poppins(
                                 textStyle: TextStyle(
                                   fontSize: 14,
@@ -66,6 +66,10 @@ class _LoginState extends State<Login> {
                       Column(
                         children: <Widget>[
                           RoundedInputField(
+                            hintText: "Your Name",
+                            onChanged: (value) {},
+                          ),
+                          RoundedInputField(
                             hintText: "Your Email",
                             icon: Icons.email,
                             onChanged: (value) {},
@@ -76,12 +80,12 @@ class _LoginState extends State<Login> {
                         ],
                       ),
                       RoundedButton(
-                        text: "Masuk",
+                        text: "Daftar",
                         press: () {},
                         height: size.height * 0.07,
                       ),
                       Text(
-                        "masuk dengan",
+                        "daftar dengan",
                         style: TextStyle(
                           color: Colors.grey[700],
                         ),
@@ -129,12 +133,12 @@ class _LoginState extends State<Login> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Text("Tidak punya akun?"),
+                          Text("Sudah punya akun?"),
                           TextButton(
                               onPressed: () {
-                                Navigator.pushNamed(context, "/signup");
+                                Navigator.pushNamed(context, "/login");
                               },
-                              child: Text("daftar disini")),
+                              child: Text("masuk disini")),
                         ],
                       )
                     ],
