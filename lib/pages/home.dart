@@ -134,7 +134,7 @@ class _HomeState extends State<Home> {
                             style: GoogleFonts.poppins(
                               textStyle: TextStyle(
                                 fontSize: 14,
-                                color: Colors.white,
+                                color: Colors.grey[800],
                               ),
                             ),
                           ),
