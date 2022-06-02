@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'dart:ui';
-import 'package:kuliner_go/components/already_have_an_account_acheck.dart';
-import 'package:kuliner_go/components/rounded_button.dart';
-import 'package:kuliner_go/components/rounded_input_field.dart';
-import 'package:kuliner_go/components/rounded_password_field.dart';
-import 'package:auth_buttons/auth_buttons.dart';
+import 'package:kuliner_go/components/restaurant_card.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -41,7 +36,7 @@ class _HomeState extends State<Home> {
             child: Column(
               children: [
                 Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage("assets/bg.png"),
                       fit: BoxFit.cover,
@@ -62,6 +57,7 @@ class _HomeState extends State<Home> {
                               "Lokasi terkini",
                               style: GoogleFonts.poppins(
                                 color: Colors.white,
+                                fontSize: 12.0,
                               ),
                             ),
                             TextButton.icon(
@@ -69,7 +65,7 @@ class _HomeState extends State<Home> {
                                 padding: EdgeInsets.all(0),
                               ),
                               onPressed: () {},
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.location_on_rounded,
                                 color: Colors.white,
                               ),
@@ -77,6 +73,7 @@ class _HomeState extends State<Home> {
                                 "Bojongsoang",
                                 style: GoogleFonts.poppins(
                                   color: Colors.white,
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ),
                             ),
@@ -88,27 +85,48 @@ class _HomeState extends State<Home> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              "Halo Arla",
-                              style: GoogleFonts.poppins(
-                                color: Colors.white,
-                                fontSize: 24,
-                                fontWeight: FontWeight.w600,
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 8.0,
+                              ),
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(0, 0, 7, 0),
+                                    child: Text(
+                                      "Halo Anda",
+                                      style: GoogleFonts.poppins(
+                                        color: Colors.white,
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ),
+                                  const Icon(
+                                    Icons.waving_hand_sharp,
+                                    color: Colors.amber,
+                                  ),
+                                ],
                               ),
                             ),
-                            Text(
-                              "Kuliner.GO mempunyai lebih dari 1000 restoran",
-                              style: GoogleFonts.poppins(
-                                color: Colors.white,
-                                fontSize: 12,
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 10.0),
+                              child: Text(
+                                "Kuliner.GO mempunyai lebih dari 1000 restoran",
+                                style: GoogleFonts.poppins(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                ),
                               ),
                             ),
                           ],
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.symmetric(vertical: 20.0),
+                        padding: const EdgeInsets.symmetric(vertical: 16.0),
                         child: Container(
+                          padding: const EdgeInsets.fromLTRB(10.0, 3.0, 0, 3.0),
                           width: screenWidth * 0.85,
                           decoration: BoxDecoration(
                             color: Colors.white,
@@ -125,10 +143,13 @@ class _HomeState extends State<Home> {
                                   color: Colors.grey[300],
                                 ),
                               ),
-                              prefixIcon: Icon(Icons.search),
+                              prefixIcon: const Icon(
+                                Icons.search_rounded,
+                                color: Colors.black,
+                              ),
                               contentPadding: EdgeInsets.symmetric(
-                                horizontal: getProportionateScreenWidth(20),
-                                vertical: getProportionateScreenHeight(14),
+                                horizontal: getProportionateScreenWidth(16),
+                                vertical: getProportionateScreenHeight(16),
                               ),
                             ),
                             style: GoogleFonts.poppins(
@@ -137,6 +158,7 @@ class _HomeState extends State<Home> {
                                 color: Colors.grey[800],
                               ),
                             ),
+                            cursorColor: Colors.black,
                           ),
                         ),
                       ),
@@ -144,17 +166,119 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 Container(
-                  height: 500,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: getProportionateScreenWidth(25),
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(30),
+                    width: screenWidth,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: getProportionateScreenWidth(25),
+                      vertical: getProportionateScreenWidth(20),
                     ),
-                    color: Colors.white,
-                  ),
-                ),
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(30),
+                      ),
+                      color: Colors.white,
+                    ),
+                    child: Column(
+                      children: [
+                        Container(
+                          width: 50,
+                          height: 6.0,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50.0),
+                            color: Colors.grey[350],
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.symmetric(vertical: 17.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              TextButton.icon(
+                                icon: Icon(
+                                  Icons.filter_list,
+                                  size: 20,
+                                ),
+                                onPressed: () {},
+                                label: Text("Filter"),
+                                style: TextButton.styleFrom(
+                                  textStyle: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 12.0,
+                                  ),
+                                  backgroundColor: Colors.blue,
+                                  padding: const EdgeInsets.fromLTRB(
+                                      18.0, 7.0, 18.0, 7.0),
+                                  primary: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(50.0),
+                                  ),
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () {},
+                                child: Text("Popularitas"),
+                                style: TextButton.styleFrom(
+                                  textStyle: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 12.0,
+                                  ),
+                                  backgroundColor: Colors.blue,
+                                  padding: const EdgeInsets.fromLTRB(
+                                      32.0, 7.0, 32.0, 7.0),
+                                  primary: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(50.0),
+                                  ),
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () {},
+                                style: TextButton.styleFrom(
+                                  textStyle: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 12.0,
+                                  ),
+                                  backgroundColor: Colors.blue,
+                                  padding: const EdgeInsets.fromLTRB(
+                                      30.0, 7.0, 30.0, 7.0),
+                                  primary: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(50.0),
+                                  ),
+                                ),
+                                child: Text("\$\$\$\$"),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Restoran terdekat",
+                                style: GoogleFonts.poppins(
+                                  fontSize: 19.0,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () => {},
+                                child: Text(
+                                  "Lihat semua",
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 13.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        RestaurantCard(nama: "Warunk Mulya"),
+                        RestaurantCard(nama: "Mororejo"),
+                        RestaurantCard(nama: "Ayam Crisbar"),
+                      ],
+                    )),
               ],
             ),
           ),
