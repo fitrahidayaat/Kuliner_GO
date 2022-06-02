@@ -1031,7 +1031,7 @@ class _HomeState extends State<Home> {
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.white,
         selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.grey[350],
+        unselectedItemColor: Colors.grey[340],
         unselectedFontSize: 10,
         selectedFontSize: 11,
         iconSize: 24,
