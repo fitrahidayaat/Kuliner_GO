@@ -219,7 +219,7 @@ class _HomeState extends State<Home> {
                               ),
                               TextButton(
                                 onPressed: () {},
-                                child: Text("Popularitas"),
+                                child: Text("Buka Sekarang"),
                                 style: TextButton.styleFrom(
                                   textStyle: GoogleFonts.poppins(
                                     fontWeight: FontWeight.w500,
@@ -227,7 +227,7 @@ class _HomeState extends State<Home> {
                                   ),
                                   // backgroundColor: Colors.blue,
                                   padding: const EdgeInsets.fromLTRB(
-                                      32.0, 7.0, 32.0, 7.0),
+                                      30.0, 7.0, 30.0, 7.0),
                                   primary: Colors.black,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(50.0),
@@ -301,7 +301,7 @@ class _HomeState extends State<Home> {
                                             "Aneka nasi",
                                             style: GoogleFonts.poppins(
                                               color: Colors.black,
-                                              fontSize: 12.0,
+                                              fontSize: 10.0,
                                             ),
                                           ),
                                         )
@@ -331,7 +331,7 @@ class _HomeState extends State<Home> {
                                             "Minuman",
                                             style: GoogleFonts.poppins(
                                               color: Colors.black,
-                                              fontSize: 12.0,
+                                              fontSize: 10.0,
                                             ),
                                           ),
                                         )
@@ -361,7 +361,7 @@ class _HomeState extends State<Home> {
                                             "Seafood",
                                             style: GoogleFonts.poppins(
                                               color: Colors.black,
-                                              fontSize: 12.0,
+                                              fontSize: 10.0,
                                             ),
                                           ),
                                         )
@@ -410,8 +410,8 @@ class _HomeState extends State<Home> {
                               Text(
                                 "Restoran terdekat",
                                 style: GoogleFonts.poppins(
-                                  fontSize: 19.0,
-                                  fontWeight: FontWeight.w700,
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ),
                               TextButton(
@@ -437,8 +437,207 @@ class _HomeState extends State<Home> {
           ),
         ),
       ),
-      Center(child: Text('Favorit')),
-      Center(child: Text('Riwayat')),
+      SafeArea(
+        child: Container(
+          color: Colors.white,
+          height: screenHeight,
+          child: SingleChildScrollView(
+            child: Container(
+              color: Colors.blue,
+              child: Column(
+                children: [
+                  Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/bg.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: getProportionateScreenWidth(25),
+                      vertical: getProportionateScreenHeight(20),
+                    ),
+                    child: Column(
+                      children: [
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 8.0,
+                                ),
+                                child: Row(
+                                  children: [
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.fromLTRB(0, 0, 7, 0),
+                                      child: Text(
+                                        "Favorit",
+                                        style: GoogleFonts.poppins(
+                                          color: Colors.white,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: screenWidth,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: getProportionateScreenWidth(25),
+                      vertical: getProportionateScreenWidth(20),
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(30),
+                      ),
+                      color: Colors.white,
+                    ),
+                    child: Column(
+                      children: [
+                        RestaurantCard(nama: "Warunk Mulya"),
+                        RestaurantCard(nama: "Mororejo"),
+                        RestaurantCard(nama: "Ayam Crisbar"),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+      SafeArea(
+        child: Container(
+          color: Colors.white,
+          height: screenHeight,
+          child: SingleChildScrollView(
+            child: Container(
+              color: Colors.blue,
+              child: Column(
+                children: [
+                  Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/bg.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: getProportionateScreenWidth(25),
+                      vertical: getProportionateScreenHeight(20),
+                    ),
+                    child: Column(
+                      children: [
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 8.0,
+                                ),
+                                child: Row(
+                                  children: [
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.fromLTRB(0, 0, 7, 0),
+                                      child: Text(
+                                        "Riwayat",
+                                        style: GoogleFonts.poppins(
+                                          color: Colors.white,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: screenWidth,
+                    height: screenHeight,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: getProportionateScreenWidth(25),
+                      vertical: getProportionateScreenWidth(20),
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(30),
+                      ),
+                      color: Colors.white,
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
+                      child: Column(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.grey[100],
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.all(50),
+                              child: Container(
+                                width: 70,
+                                height: 70,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(100),
+                                ),
+                                child: Image(
+                                  image: AssetImage("assets/cry.png"),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 10.0),
+                            child: Text(
+                              "Kamu belum pernah pesan\ntempat di resto manapun",
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.poppins(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600,
+                                height: 1.7,
+                              ),
+                            ),
+                          ),
+                          Text(
+                            "Silahkan pesan restoran favoritmu\ndan kembali lagi kesini",
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.poppins(
+                              fontSize: 14,
+                              height: 1.7,
+                              color: Colors.grey[600],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
       Center(child: Text('Profil')),
     ];
     return Scaffold(

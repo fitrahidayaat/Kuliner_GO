@@ -27,12 +27,13 @@ class RestaurantCard extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.fromLTRB(0, 10, 0, 20),
+            padding: EdgeInsets.fromLTRB(0, 17, 0, 17),
             child: TextButton(
               onPressed: () {},
               style: TextButton.styleFrom(
                 padding: EdgeInsets.all(0),
                 primary: Colors.grey[400],
+                elevation: 0,
               ),
               child: Row(
                 children: [
@@ -40,11 +41,11 @@ class RestaurantCard extends StatelessWidget {
                     padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
                     child: Image.asset(
                       "assets/${this.nama}.png",
-                      width: screenWidth * 0.25,
+                      width: screenWidth * 0.225,
                     ),
                   ),
                   Container(
-                    height: screenWidth * 0.25,
+                    height: screenWidth * 0.225,
                     width: screenWidth * 0.52,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
