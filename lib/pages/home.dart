@@ -204,12 +204,16 @@ class _HomeState extends State<Home> {
                                     fontWeight: FontWeight.w500,
                                     fontSize: 12.0,
                                   ),
-                                  backgroundColor: Colors.blue,
+                                  // backgroundColor: Colors.blue,
                                   padding: const EdgeInsets.fromLTRB(
                                       18.0, 7.0, 18.0, 7.0),
-                                  primary: Colors.white,
+                                  primary: Colors.black,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(50.0),
+                                    side: BorderSide(
+                                      color: Color.fromARGB(255, 208, 208, 208),
+                                      width: 1,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -221,12 +225,16 @@ class _HomeState extends State<Home> {
                                     fontWeight: FontWeight.w500,
                                     fontSize: 12.0,
                                   ),
-                                  backgroundColor: Colors.blue,
+                                  // backgroundColor: Colors.blue,
                                   padding: const EdgeInsets.fromLTRB(
                                       32.0, 7.0, 32.0, 7.0),
-                                  primary: Colors.white,
+                                  primary: Colors.black,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(50.0),
+                                    side: BorderSide(
+                                      color: Color.fromARGB(255, 208, 208, 208),
+                                      width: 1,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -237,15 +245,160 @@ class _HomeState extends State<Home> {
                                     fontWeight: FontWeight.w500,
                                     fontSize: 12.0,
                                   ),
-                                  backgroundColor: Colors.blue,
+
+                                  // backgroundColor: Colors.blue,
                                   padding: const EdgeInsets.fromLTRB(
                                       30.0, 7.0, 30.0, 7.0),
-                                  primary: Colors.white,
+                                  primary: Colors.black,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(50.0),
+                                    side: BorderSide(
+                                      color: Color.fromARGB(255, 208, 208, 208),
+                                      width: 1,
+                                    ),
                                   ),
                                 ),
                                 child: Text("\$\$\$\$"),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          child: Column(
+                            children: [
+                              Align(
+                                alignment: Alignment.topLeft,
+                                child: Text(
+                                  "Pilihan Kategori",
+                                  style: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  TextButton(
+                                    onPressed: () {},
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          width: screenWidth * 0.17,
+                                          height: screenWidth * 0.17,
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                "assets/rice.png",
+                                              ),
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.fromLTRB(
+                                              0, 8, 0, 0),
+                                          child: Text(
+                                            "Aneka nasi",
+                                            style: GoogleFonts.poppins(
+                                              color: Colors.black,
+                                              fontSize: 12.0,
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {},
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          width: screenWidth * 0.17,
+                                          height: screenWidth * 0.17,
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                "assets/drink.png",
+                                              ),
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.fromLTRB(
+                                              0, 8, 0, 0),
+                                          child: Text(
+                                            "Minuman",
+                                            style: GoogleFonts.poppins(
+                                              color: Colors.black,
+                                              fontSize: 12.0,
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {},
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          width: screenWidth * 0.17,
+                                          height: screenWidth * 0.17,
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                "assets/seafood.png",
+                                              ),
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.fromLTRB(
+                                              0, 8, 0, 0),
+                                          child: Text(
+                                            "Seafood",
+                                            style: GoogleFonts.poppins(
+                                              color: Colors.black,
+                                              fontSize: 12.0,
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {},
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          width: screenWidth * 0.17,
+                                          height: screenWidth * 0.17,
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                "assets/etc.png",
+                                              ),
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.fromLTRB(
+                                              0, 8, 0, 0),
+                                          child: Text(
+                                            "Lainnya",
+                                            style: GoogleFonts.poppins(
+                                              color: Colors.black,
+                                              fontSize: 12.0,
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
