@@ -215,13 +215,15 @@ class _OnboardState extends State<Onboard> {
                   curve: Curves.easeInOut,
                 );
               },
-              child: Text(listButton[counter],
-                  style: GoogleFonts.poppins(
-                    textStyle: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  )),
+              child: Text(
+                listButton[counter],
+                style: GoogleFonts.poppins(
+                  textStyle: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
             ),
           ],
         ),

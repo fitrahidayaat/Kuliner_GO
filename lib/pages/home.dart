@@ -638,7 +638,391 @@ class _HomeState extends State<Home> {
           ),
         ),
       ),
-      Center(child: Text('Profil')),
+      SafeArea(
+        child: Scaffold(
+          backgroundColor: Colors.white,
+          body: SingleChildScrollView(
+            child: Container(
+              color: Colors.white,
+              // height: screenHeight,
+              child: Column(
+                children: [
+                  Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Container(
+                        height: screenHeight * 0.2,
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage("assets/bg.png"),
+                            fit: BoxFit.cover,
+                          ),
+                          color: Colors.blue,
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: getProportionateScreenWidth(25),
+                          vertical: getProportionateScreenHeight(20),
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            const EdgeInsets.fromLTRB(23.0, 16.0, 10.0, 0.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Profil",
+                              style: GoogleFonts.poppins(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18.0,
+                              ),
+                            ),
+                            TextButton.icon(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.edit,
+                                color: Colors.white,
+                              ),
+                              label: Text(""),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Positioned(
+                        child: Container(
+                          margin: EdgeInsets.only(top: screenHeight * 0.15),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                          height: 0.08 * screenHeight,
+                        ),
+                      ),
+                      Positioned(
+                        top: screenHeight * 0.15 - 55,
+                        left: screenWidth / 2 - 55,
+                        child: Column(
+                          children: [
+                            CircleAvatar(
+                              radius: 55,
+                              backgroundColor: Colors.white,
+                              child: CircleAvatar(
+                                backgroundImage:
+                                    AssetImage("assets/Ayam Crisbar.png"),
+                                radius: 50,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10.0),
+                        child: Text(
+                          "Magnus Carlsen",
+                          style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 16.0),
+                        child: Text(
+                          "magnuscarlsen@gmail.com",
+                          style: GoogleFonts.poppins(
+                            fontSize: 14.0,
+                            color: Colors.grey[500],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 17.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Column(
+                              children: [
+                                Text(
+                                  "23",
+                                  style: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(height: 5.0),
+                                Text(
+                                  "Mengikuti",
+                                  style: GoogleFonts.poppins(
+                                    color: Colors.grey[600],
+                                    fontSize: 11.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Container(
+                              height: 40,
+                              color: Colors.grey[100],
+                              width: 1,
+                            ),
+                            Column(
+                              children: [
+                                Text(
+                                  "23",
+                                  style: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(height: 5.0),
+                                Text(
+                                  "Pengikut",
+                                  style: GoogleFonts.poppins(
+                                    color: Colors.grey[600],
+                                    fontSize: 11.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: Container(
+                                width: screenWidth,
+                                height: 35,
+                                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          Icons.chat_bubble,
+                                          color: Colors.black,
+                                          size: 20,
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 7.0),
+                                          child: Text(
+                                            "Ulasan Saya",
+                                            style: GoogleFonts.poppins(
+                                              color: Colors.black,
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Icon(
+                                      Icons.keyboard_arrow_right,
+                                      color: Colors.grey[335],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: Container(
+                                width: screenWidth,
+                                height: 35,
+                                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          Icons.account_balance_wallet_rounded,
+                                          color: Colors.black,
+                                          size: 20,
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 7.0),
+                                          child: Text(
+                                            "Kartu / Rekening Bank",
+                                            style: GoogleFonts.poppins(
+                                              color: Colors.black,
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Icon(
+                                      Icons.keyboard_arrow_right,
+                                      color: Colors.grey[335],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: Container(
+                                width: screenWidth,
+                                height: 35,
+                                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          Icons.notifications,
+                                          color: Colors.black,
+                                          size: 24,
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 7.0),
+                                          child: Text(
+                                            "Notifikasi",
+                                            style: GoogleFonts.poppins(
+                                              color: Colors.black,
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Icon(
+                                      Icons.keyboard_arrow_right,
+                                      color: Colors.grey[335],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: Container(
+                                width: screenWidth,
+                                height: 35,
+                                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          Icons.language,
+                                          color: Colors.black,
+                                          size: 24,
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 7.0),
+                                          child: Text(
+                                            "Pilihan Bahasa",
+                                            style: GoogleFonts.poppins(
+                                              color: Colors.black,
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Icon(
+                                      Icons.keyboard_arrow_right,
+                                      color: Colors.grey[335],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: Container(
+                                width: screenWidth,
+                                height: 35,
+                                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Icon(
+                                          Icons.star,
+                                          color: Colors.black,
+                                          size: 24,
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 7.0),
+                                          child: Text(
+                                            "Beri rating",
+                                            style: GoogleFonts.poppins(
+                                              color: Colors.black,
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Icon(
+                                      Icons.keyboard_arrow_right,
+                                      color: Colors.grey[335],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Center(
+                              child: TextButton(
+                                onPressed: () {},
+                                style: TextButton.styleFrom(
+                                  backgroundColor: Colors.deepOrange,
+                                  padding: EdgeInsets.fromLTRB(
+                                      20.0, 14.0, 20.0, 14.0),
+                                  primary: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(50.0),
+                                  ),
+                                ),
+                                child: Container(
+                                  width: screenWidth * 0.75,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(Icons.exit_to_app),
+                                      Text("Saya fitra"),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
     ];
     return Scaffold(
       body: tabs[_currentIndex],
