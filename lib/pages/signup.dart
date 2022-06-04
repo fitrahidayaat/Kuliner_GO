@@ -17,29 +17,58 @@ class Signup extends StatefulWidget {
 class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    MediaQueryData _mediaQueryData = MediaQuery.of(context);
+    double screenWidth = _mediaQueryData.size.width;
+    double screenHeight = _mediaQueryData.size.height;
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.white,
       body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/bg.png"),
+            fit: BoxFit.cover,
+          ),
+          color: Colors.blue,
+        ),
         child: Column(
           children: <Widget>[
-            Expanded(
-              flex: 3,
-              child: Container(
-                color: Colors.blue,
+            Container(
+              height: screenHeight * 0.14,
+              padding: EdgeInsets.symmetric(vertical: 16.0),
+              child: Row(
+                children: [
+                  TextButton(
+                    onPressed: () {},
+                    child: Icon(
+                      Icons.keyboard_arrow_left,
+                      color: Colors.white,
+                      size: 25.0,
+                    ),
+                  ),
+                ],
               ),
             ),
-            Expanded(
-              flex: 18,
+            Container(
+              height: screenHeight * 0.86,
               child: Container(
-                  color: Colors.white,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20.0),
+                      topRight: Radius.circular(20.0),
+                      bottomLeft: Radius.zero,
+                      bottomRight: Radius.zero,
+                    ),
+                  ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
+                          SizedBox(
+                            height: 10.0,
+                          ),
                           Text("Daftar",
                               style: GoogleFonts.poppins(
                                 textStyle: TextStyle(
@@ -67,6 +96,7 @@ class _SignupState extends State<Signup> {
                         children: <Widget>[
                           RoundedInputField(
                             hintText: "Your Name",
+                            icon: Icons.person,
                             onChanged: (value) {},
                           ),
                           RoundedInputField(
@@ -82,7 +112,7 @@ class _SignupState extends State<Signup> {
                       RoundedButton(
                         text: "Daftar",
                         press: () {},
-                        height: size.height * 0.07,
+                        height: screenHeight * 0.07,
                       ),
                       Text(
                         "daftar dengan",
