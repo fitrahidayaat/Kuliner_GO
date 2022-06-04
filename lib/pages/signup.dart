@@ -38,7 +38,9 @@ class _SignupState extends State<Signup> {
               child: Row(
                 children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context, true);
+                    },
                     child: Icon(
                       Icons.keyboard_arrow_left,
                       color: Colors.white,

@@ -38,7 +38,9 @@ class _LoginState extends State<Login> {
               child: Row(
                 children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context, true);
+                    },
                     child: Icon(
                       Icons.keyboard_arrow_left,
                       color: Colors.white,
