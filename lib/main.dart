@@ -3,6 +3,7 @@ import 'package:kuliner_go/pages/onboard.dart';
 import 'package:kuliner_go/pages/login.dart';
 import 'package:kuliner_go/pages/signup.dart';
 import 'package:kuliner_go/pages/home.dart';
+import 'package:kuliner_go/pages/detail_restaurant.dart';
 
 void main() => runApp(MaterialApp(
       initialRoute: '/home',
@@ -11,6 +12,6 @@ void main() => runApp(MaterialApp(
         '/login': (context) => Login(),
         '/signup': (context) => Signup(),
         '/home': (context) => Home(),
-        // '/location': (context) => ChooseLocation(),
+        '/detail': (context) => DetailRestaurant(),
       },
     ));

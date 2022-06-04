@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kuliner_go/pages/login.dart';
+import 'package:kuliner_go/pages/detail_restaurant.dart';
 
 class RestaurantCard extends StatelessWidget {
   final String nama;
@@ -29,7 +31,12 @@ class RestaurantCard extends StatelessWidget {
           Container(
             padding: EdgeInsets.fromLTRB(0, 17, 0, 17),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DetailRestaurant()));
+              },
               style: TextButton.styleFrom(
                 padding: EdgeInsets.all(0),
                 primary: Colors.grey[400],
