@@ -39,6 +39,8 @@ dependencies:
   onboarding: ^3.1.0
   smooth_page_indicator: ^1.0.0+2
   auth_buttons: ^2.0.4
+  firebase_core: ^1.17.1
+  firebase_auth: ^3.3.19
 
 dev_dependencies:
   flutter_test:

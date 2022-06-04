@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kuliner_go/components/restaurant_card.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -10,6 +12,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final FirebaseAuth auth = FirebaseAuth.instance;
   int _currentIndex = 0;
   Map data = {};
   @override
@@ -990,7 +993,10 @@ class _HomeState extends State<Home> {
                             ),
                             Center(
                               child: TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  auth.signOut();
+                                  Navigator.pushNamed(context, "/login");
+                                },
                                 style: TextButton.styleFrom(
                                   backgroundColor: Colors.deepOrange,
                                   padding: EdgeInsets.fromLTRB(
