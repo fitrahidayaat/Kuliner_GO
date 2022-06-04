@@ -5,6 +5,7 @@ import 'package:kuliner_go/pages/signup.dart';
 import 'package:kuliner_go/pages/home.dart';
 import 'package:kuliner_go/pages/detail_restaurant.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:kuliner_go/pages/verification.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,6 +18,7 @@ Future main() async {
       '/signup': (context) => Signup(),
       '/home': (context) => Home(),
       '/detail': (context) => DetailRestaurant(),
+      '/verivication' : (context) => Verifikasi(),
     },
   ));
 }

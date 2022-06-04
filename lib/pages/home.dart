@@ -994,8 +994,8 @@ class _HomeState extends State<Home> {
                             Center(
                               child: TextButton(
                                 onPressed: () {
-                                  auth.signOut();
-                                  Navigator.pushNamed(context, "/login");
+                                  auth.signOut().then((_) =>
+                                      Navigator.pushNamed(context, "/login"));
                                 },
                                 style: TextButton.styleFrom(
                                   backgroundColor: Colors.deepOrange,

@@ -94,8 +94,11 @@ class _SignupState extends State<Signup> {
                       RoundedButton(
                         text: "Daftar",
                         press: () {
-                          auth.createUserWithEmailAndPassword(
-                              email: email, password: password);
+                          auth
+                              .createUserWithEmailAndPassword(
+                                  email: email, password: password)
+                              .then((_) => Navigator.pushNamed(
+                                  context, "/verivication"));
                         },
                         height: size.height * 0.07,
                       ),

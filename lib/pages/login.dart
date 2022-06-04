@@ -87,9 +87,8 @@ class _LoginState extends State<Login> {
                       RoundedButton(
                         text: "Masuk",
                         press: () {
-                          auth.signInWithEmailAndPassword(
-                              email: email, password: password);
-                          Navigator.pushNamed(context, '/home');
+                          auth.signInWithEmailAndPassword(email: email, password: password)
+                          .then((_) => Navigator.pushNamed(context, '/home'));
                         },
                         height: size.height * 0.07,
                       ),
