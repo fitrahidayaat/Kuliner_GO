@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-// import 'package:kuliner_go/components/restaurant_card.dart';
+import 'package:kuliner_go/pages/reservation.dart';
 import 'package:kuliner_go/pages/review.dart';
 
 class DetailRestaurant extends StatefulWidget {
@@ -45,7 +45,12 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
             margin: EdgeInsets.fromLTRB(0, 12, 0, 0),
             child: FloatingActionButton.extended(
               backgroundColor: Colors.blue,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Reservation()),
+                );
+              },
               label: Text("Pesan Tempat"),
             ),
           )

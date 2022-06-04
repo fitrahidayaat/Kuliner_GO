@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kuliner_go/pages/add_review.dart';
 
 class Review extends StatefulWidget {
   const Review({Key? key}) : super(key: key);
@@ -156,7 +157,7 @@ class _ReviewState extends State<Review> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => Review(),
+                                      builder: (context) => AddReview(),
                                     ),
                                   );
                                 },
@@ -169,7 +170,7 @@ class _ReviewState extends State<Review> {
                                       Row(
                                         children: [
                                           Icon(
-                                            Icons.chat_rounded,
+                                            Icons.add_comment,
                                             color: Colors.black,
                                           ),
                                           Padding(

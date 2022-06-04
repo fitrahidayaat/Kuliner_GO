@@ -22,23 +22,51 @@ class _LoginState extends State<Login> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    MediaQueryData _mediaQueryData = MediaQuery.of(context);
+    double screenWidth = _mediaQueryData.size.width;
+    double screenHeight = _mediaQueryData.size.height;
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.white,
       body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/bg.png"),
+            fit: BoxFit.cover,
+          ),
+          color: Colors.blue,
+        ),
         child: Column(
           children: <Widget>[
-            Expanded(
-              flex: 3,
-              child: Container(
-                color: Colors.blue,
+            Container(
+              height: screenHeight * 0.14,
+              padding: EdgeInsets.symmetric(vertical: 16.0),
+              child: Row(
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context, true);
+                    },
+                    child: Icon(
+                      Icons.keyboard_arrow_left,
+                      color: Colors.white,
+                      size: 25.0,
+                    ),
+                  ),
+                ],
               ),
             ),
-            Expanded(
-              flex: 18,
+            Container(
+              height: screenHeight * 0.86,
               child: Container(
-                  color: Colors.white,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20.0),
+                      topRight: Radius.circular(20.0),
+                      bottomLeft: Radius.zero,
+                      bottomRight: Radius.zero,
+                    ),
+                  ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
@@ -86,6 +114,7 @@ class _LoginState extends State<Login> {
                       ),
                       RoundedButton(
                         text: "Masuk",
+
                         press: () {
                           auth.signInWithEmailAndPassword(email: email, password: password)
                           .then((_) => Navigator.pushNamed(context, '/home'));

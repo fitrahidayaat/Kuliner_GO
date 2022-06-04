@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:kuliner_go/constants.dart';
 
 class RoundedButton extends StatelessWidget {
@@ -41,7 +42,7 @@ class RoundedButton extends StatelessWidget {
           horizontal: 40,
           // vertical: 20,
         ),
-        textStyle: TextStyle(
+        textStyle: GoogleFonts.poppins(
           color: color,
           fontSize: 14,
           fontWeight: FontWeight.w500,
