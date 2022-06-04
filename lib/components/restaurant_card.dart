@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:kuliner_go/pages/login.dart';
 import 'package:kuliner_go/pages/detail_restaurant.dart';
 
 class RestaurantCard extends StatelessWidget {
@@ -33,9 +32,9 @@ class RestaurantCard extends StatelessWidget {
             child: TextButton(
               onPressed: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => DetailRestaurant()));
+                  context,
+                  MaterialPageRoute(builder: (context) => DetailRestaurant()),
+                );
               },
               style: TextButton.styleFrom(
                 padding: EdgeInsets.all(0),

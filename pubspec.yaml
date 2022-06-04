@@ -39,6 +39,7 @@ dependencies:
   onboarding: ^3.1.0
   smooth_page_indicator: ^1.0.0+2
   auth_buttons: ^2.0.4
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
