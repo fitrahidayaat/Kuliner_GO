@@ -13,18 +13,19 @@ class Verifikasi extends StatefulWidget {
 class _VerifikasiState extends State<Verifikasi> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   late Timer timer;
-  late Duration time = Duration(minutes: 5);
+  late Duration time = Duration(seconds: 5);
 
   @override
-  void initState() async {
+  void initState() {
     late User? user = auth.currentUser;
     if (user != null && !user.emailVerified) {
-      await user.sendEmailVerification();
+      user.sendEmailVerification().then((result) {
+        timer = Timer.periodic(time, (timer) {
+          checkEmailVerivied();
+        });
+      });
     }
 
-    timer = Timer.periodic(time, (timer) {
-      checkEmailVerivied();
-    });
     super.initState();
   }
 
@@ -44,12 +45,12 @@ class _VerifikasiState extends State<Verifikasi> {
 
   Future<void> checkEmailVerivied() async {
     late User? user = auth.currentUser;
-    if (user != null && !user.emailVerified) {
-      await user.sendEmailVerification();
-      user.reload();
+    if (user != null) {
       if (user.emailVerified) {
         timer.cancel();
         Navigator.pushNamed(context, '/home');
+      } else {
+        user.reload();
       }
     }
   }
