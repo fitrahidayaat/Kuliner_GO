@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "972365452548",
+    "project_id": "kulinergo-50900",
+    "storage_bucket": "kulinergo-50900.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:972365452548:android:d21e98896c91402ff6ec51",
+        "android_client_info": {
+          "package_name": "com.example.kuliner_go"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "972365452548-c9k1k38douqfng2h0bskpur81ptbhiu4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCj3I1vVpivVL9epwtLax-ElL7LmnN8A3E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "972365452548-c9k1k38douqfng2h0bskpur81ptbhiu4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

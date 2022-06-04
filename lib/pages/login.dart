@@ -6,6 +6,8 @@ import 'package:kuliner_go/components/rounded_button.dart';
 import 'package:kuliner_go/components/rounded_input_field.dart';
 import 'package:kuliner_go/components/rounded_password_field.dart';
 import 'package:auth_buttons/auth_buttons.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -15,6 +17,9 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  late String email;
+  late String password;
+  final FirebaseAuth auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     MediaQueryData _mediaQueryData = MediaQuery.of(context);
@@ -96,17 +101,25 @@ class _LoginState extends State<Login> {
                           RoundedInputField(
                             hintText: "Your Email",
                             icon: Icons.email,
-                            onChanged: (value) {},
+                            onChanged: (value) {
+                              email = value.trim();
+                            },
                           ),
                           RoundedPasswordField(
-                            onChanged: (value) {},
+                            onChanged: (value) {
+                              password = value.trim();
+                            },
                           ),
                         ],
                       ),
                       RoundedButton(
                         text: "Masuk",
-                        press: () {},
-                        height: screenHeight * 0.07,
+
+                        press: () {
+                          auth.signInWithEmailAndPassword(email: email, password: password)
+                          .then((_) => Navigator.pushNamed(context, '/home'));
+                        },
+                        height: size.height * 0.07,
                       ),
                       Text(
                         "masuk dengan",
