@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:kuliner_go/components/api_consumer.dart';
 import 'package:kuliner_go/pages/reservation.dart';
 import 'package:kuliner_go/pages/review.dart' as card;
+import 'package:kuliner_go/components/review_card.dart';
 
 class DetailRestaurant extends StatefulWidget {
   final Restaurant restaurant;
@@ -17,6 +18,12 @@ class DetailRestaurant extends StatefulWidget {
 }
 
 class _DetailRestaurantState extends State<DetailRestaurant> {
+  late Future<List<Review>> reviewList;
+  void initState() {
+    reviewList = ReviewApiConsumer().fetchReviews();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     MediaQueryData _mediaQueryData = MediaQuery.of(context);
@@ -492,209 +499,24 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
                                   ),
                                 ),
                               ),
-                              Container(
-                                margin: EdgeInsets.symmetric(vertical: 8.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 12.0,
+                              FutureBuilder<List<Review>>(
+                                future: reviewList,
+                                builder: (context, snapshot) {
+                                  if (snapshot.hasData) {
+                                    return SizedBox(
+                                      height: 600,
+                                      child: ListView.builder(
+                                        // scrollDirection: Axis.horizontal,
+                                        itemCount: snapshot.data!.length,
+                                        itemBuilder: (_, index) => ReviewCard(
+                                            review: snapshot.data![index]),
                                       ),
-                                      child: Container(
-                                        padding: EdgeInsets.all(17),
-                                        decoration: BoxDecoration(
-                                          color: Colors.grey[100],
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
-                                        child: Column(
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    CircleAvatar(
-                                                      backgroundImage:
-                                                          AssetImage(
-                                                        "assets/reviewprofilepict1.png",
-                                                      ),
-                                                      radius: 20,
-                                                    ),
-                                                    Padding(
-                                                      padding: const EdgeInsets
-                                                              .symmetric(
-                                                          horizontal: 15.0),
-                                                      child: Column(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Padding(
-                                                            padding: EdgeInsets
-                                                                .symmetric(
-                                                              vertical: 5.0,
-                                                            ),
-                                                            child: Text(
-                                                              "Magzy Bogues",
-                                                              style: GoogleFonts
-                                                                  .poppins(),
-                                                            ),
-                                                          ),
-                                                          Row(
-                                                            children: [
-                                                              Icon(
-                                                                Icons.star,
-                                                                size: 15.0,
-                                                              ),
-                                                              Icon(
-                                                                Icons.star,
-                                                                size: 15.0,
-                                                              ),
-                                                              Icon(
-                                                                Icons.star,
-                                                                size: 15.0,
-                                                              ),
-                                                              Icon(
-                                                                Icons.star,
-                                                                size: 15.0,
-                                                              ),
-                                                              Icon(
-                                                                Icons.star,
-                                                                size: 15.0,
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                top: 14.0,
-                                              ),
-                                              child: Row(
-                                                children: [
-                                                  Text(
-                                                    '"Penjual sangat ramah"',
-                                                    style: GoogleFonts.poppins(
-                                                      fontSize: 12,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.symmetric(vertical: 8.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 12.0,
-                                      ),
-                                      child: Container(
-                                        padding: EdgeInsets.all(17),
-                                        decoration: BoxDecoration(
-                                          color: Colors.grey[100],
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
-                                        child: Column(
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    CircleAvatar(
-                                                      backgroundImage:
-                                                          AssetImage(
-                                                        "assets/reviewprofilepict1.png",
-                                                      ),
-                                                      radius: 20,
-                                                    ),
-                                                    Padding(
-                                                      padding: const EdgeInsets
-                                                              .symmetric(
-                                                          horizontal: 15.0),
-                                                      child: Column(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Padding(
-                                                            padding: EdgeInsets
-                                                                .symmetric(
-                                                              vertical: 5.0,
-                                                            ),
-                                                            child: Text(
-                                                              "Magzy Bogues",
-                                                              style: GoogleFonts
-                                                                  .poppins(),
-                                                            ),
-                                                          ),
-                                                          Row(
-                                                            children: [
-                                                              Icon(
-                                                                Icons.star,
-                                                                size: 15.0,
-                                                              ),
-                                                              Icon(
-                                                                Icons.star,
-                                                                size: 15.0,
-                                                              ),
-                                                              Icon(
-                                                                Icons.star,
-                                                                size: 15.0,
-                                                              ),
-                                                              Icon(
-                                                                Icons.star,
-                                                                size: 15.0,
-                                                              ),
-                                                              Icon(
-                                                                Icons.star,
-                                                                size: 15.0,
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                top: 14.0,
-                                              ),
-                                              child: Row(
-                                                children: [
-                                                  Text(
-                                                    '"Penjual sangat ramah"',
-                                                    style: GoogleFonts.poppins(
-                                                      fontSize: 12,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                    );
+                                  } else {
+                                    return Center(
+                                        child: CircularProgressIndicator());
+                                  }
+                                },
                               ),
                               SizedBox(
                                 height: 80,

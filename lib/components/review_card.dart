@@ -5,11 +5,11 @@ import 'package:kuliner_go/pages/reservation.dart';
 import 'package:kuliner_go/pages/review.dart' as card;
 
 class ReviewCard extends StatelessWidget {
-  final Restaurant restaurant;
+  final Review review;
 
   const ReviewCard({
     Key? key,
-    required this.restaurant,
+    required this.review,
   }) : super(key: key);
 
   @override
@@ -52,7 +52,7 @@ class ReviewCard extends StatelessWidget {
                                     vertical: 5.0,
                                   ),
                                   child: Text(
-                                    "Magzy Bogues",
+                                    "${this.review.user}",
                                     style: GoogleFonts.poppins(),
                                   ),
                                 ),
@@ -94,7 +94,7 @@ class ReviewCard extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          '"Penjual sangat ramah"',
+                          '"${this.review.comment}"',
                           style: GoogleFonts.poppins(
                             fontSize: 12,
                           ),

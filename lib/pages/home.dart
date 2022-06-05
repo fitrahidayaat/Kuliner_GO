@@ -17,6 +17,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   late Future<List<Restaurant>> restaurantList;
+
   final FirebaseAuth auth = FirebaseAuth.instance;
   int _currentIndex = 0;
   Map data = {};
