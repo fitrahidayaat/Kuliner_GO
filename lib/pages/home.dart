@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kuliner_go/components/restaurant_card.dart';
 import 'package:kuliner_go/components/api_consumer.dart';
-import 'package:firebase_auth/firebase_auth.dart' as pengguna;
-import 'package:firebase_core/firebase_core.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:async';
 
 class Home extends StatefulWidget {
@@ -24,7 +21,7 @@ class Home extends StatefulWidget {
 //   remove(int index) => _list.removeAt(index);
 class _HomeState extends State<Home> {
   late Future<List<Restaurant>> restaurantList;
-  final pengguna.FirebaseAuth auth = pengguna.FirebaseAuth.instance;
+  final FirebaseAuth auth = FirebaseAuth.instance;
   int _currentIndex = 0;
   Map data = {};
   void initState() {

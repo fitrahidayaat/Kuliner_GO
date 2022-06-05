@@ -28,16 +28,6 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
     MediaQueryData _mediaQueryData = MediaQuery.of(context);
     double screenWidth = _mediaQueryData.size.width;
     double screenHeight = _mediaQueryData.size.height;
-    double getProportionateScreenHeight(double inputHeight) {
-      // 812 is the layout height that designer use
-      return (inputHeight / 812.0) * screenHeight;
-    }
-
-    // Get the proportionate height as per screen size
-    double getProportionateScreenWidth(double inputWidth) {
-      // 375 is the layout width that designer use
-      return (inputWidth / 375.0) * screenWidth;
-    }
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -60,10 +50,16 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Reservation()),
+                  MaterialPageRoute(
+                      builder: (context) => Reservation(
+                            restaurant: widget.restaurant,
+                          )),
                 );
               },
-              label: Text("Pesan Tempat"),
+              label: Text(
+                "Pesan Tempat",
+                style: GoogleFonts.poppins(),
+              ),
             ),
           )
         ],
@@ -162,7 +158,9 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(
-                              vertical: 13.0, horizontal: 10.0),
+                            vertical: 13.0,
+                            horizontal: 10.0,
+                          ),
                           child: Row(
                             children: [
                               Text(
@@ -360,7 +358,7 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
                                         padding:
                                             const EdgeInsets.only(left: 10.0),
                                         child: Text(
-                                          '${widget.restaurant.openHours}',
+                                          '${widget.restaurant.menu[0]}',
                                           style: GoogleFonts.poppins(
                                             fontWeight: FontWeight.w500,
                                             fontSize: 16,

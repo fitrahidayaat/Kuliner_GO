@@ -16,18 +16,7 @@ class _ReviewPageState extends State<ReviewPage> {
   @override
   Widget build(BuildContext context) {
     MediaQueryData _mediaQueryData = MediaQuery.of(context);
-    double screenWidth = _mediaQueryData.size.width;
     double screenHeight = _mediaQueryData.size.height;
-    double getProportionateScreenHeight(double inputHeight) {
-      // 812 is the layout height that designer use
-      return (inputHeight / 812.0) * screenHeight;
-    }
-
-    // Get the proportionate height as per screen size
-    double getProportionateScreenWidth(double inputWidth) {
-      // 375 is the layout width that designer use
-      return (inputWidth / 375.0) * screenWidth;
-    }
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -43,7 +32,7 @@ class _ReviewPageState extends State<ReviewPage> {
                     children: [
                       TextButton(
                         onPressed: () => {Navigator.pop(context, true)},
-                        child: Icon(
+                        child: const Icon(
                           Icons.keyboard_arrow_left,
                           color: Colors.black,
                           size: 32,
@@ -58,7 +47,7 @@ class _ReviewPageState extends State<ReviewPage> {
                       ),
                       TextButton(
                         onPressed: () => {},
-                        child: Icon(
+                        child: const Icon(
                           Icons.keyboard_arrow_left,
                           color: Colors.transparent,
                           size: 32,

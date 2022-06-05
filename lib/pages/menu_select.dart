@@ -1,9 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kuliner_go/components/menu_card.dart';
+import 'package:kuliner_go/components/api_consumer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MenuSelect extends StatefulWidget {
-  const MenuSelect({Key? key}) : super(key: key);
+  final Restaurant restaurant;
+  final name, phone, email, date, hour, people;
+  const MenuSelect({
+    Key? key,
+    required this.restaurant,
+    required this.name,
+    required this.phone,
+    required this.email,
+    required this.date,
+    required this.hour,
+    required this.people,
+  }) : super(key: key);
 
   @override
   State<MenuSelect> createState() => _MenuSelectState();
@@ -14,31 +27,15 @@ class _MenuSelectState extends State<MenuSelect> {
   Widget build(BuildContext context) {
     MediaQueryData _mediaQueryData = MediaQuery.of(context);
     double screenWidth = _mediaQueryData.size.width;
-    double screenHeight = _mediaQueryData.size.height;
-    double getProportionateScreenHeight(double inputHeight) {
-      // 812 is the layout height that designer use
-      return (inputHeight / 812.0) * screenHeight;
-    }
-
-    // Get the proportionate height as per screen size
-    double getProportionateScreenWidth(double inputWidth) {
-      // 375 is the layout width that designer use
-      return (inputWidth / 375.0) * screenWidth;
-    }
 
     return Scaffold(
       backgroundColor: Colors.white,
       floatingActionButton: Container(
         width: screenWidth * 0.9,
-        margin: EdgeInsets.fromLTRB(0, 12, 0, 0),
+        margin: const EdgeInsets.fromLTRB(0, 12, 0, 0),
         child: FloatingActionButton.extended(
           backgroundColor: Colors.blue,
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => MenuSelect()),
-            );
-          },
+          onPressed: () {},
           label: Text(
             "Pembayaran",
             style: GoogleFonts.poppins(

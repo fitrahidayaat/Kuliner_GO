@@ -3,16 +3,22 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:kuliner_go/components/rounded_input_field.dart';
 import 'package:intl/intl.dart';
 import 'package:kuliner_go/components/text_field_container.dart';
-import 'package:kuliner_go/pages/menu_select.dart';
+import 'package:kuliner_go/components/api_consumer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Reservation extends StatefulWidget {
-  const Reservation({Key? key}) : super(key: key);
+  final Restaurant restaurant;
+  const Reservation({Key? key, required this.restaurant}) : super(key: key);
 
   @override
   State<Reservation> createState() => _ReservationState();
 }
 
 class _ReservationState extends State<Reservation> {
+  late String name, phone, email, date, hour;
+  final Uri _url = Uri.parse(
+      "https://api.whatsapp.com/send?phone=6281314494505&text=Kak+mau+mau+pesan+tas+...+dong");
+
   TextEditingController dateinput = TextEditingController();
   TextEditingController timeinput = TextEditingController();
   late int counter = 0;
@@ -26,21 +32,14 @@ class _ReservationState extends State<Reservation> {
     super.initState();
   }
 
+  void _launchUrl() async {
+    if (!await launchUrl(_url)) throw 'Could not launch $_url';
+  }
+
   @override
   Widget build(BuildContext context) {
     MediaQueryData _mediaQueryData = MediaQuery.of(context);
     double screenWidth = _mediaQueryData.size.width;
-    double screenHeight = _mediaQueryData.size.height;
-    double getProportionateScreenHeight(double inputHeight) {
-      // 812 is the layout height that designer use
-      return (inputHeight / 812.0) * screenHeight;
-    }
-
-    // Get the proportionate height as per screen size
-    double getProportionateScreenWidth(double inputWidth) {
-      // 375 is the layout width that designer use
-      return (inputWidth / 375.0) * screenWidth;
-    }
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -49,14 +48,9 @@ class _ReservationState extends State<Reservation> {
         margin: EdgeInsets.fromLTRB(0, 12, 0, 0),
         child: FloatingActionButton.extended(
           backgroundColor: Colors.blue,
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => MenuSelect()),
-            );
-          },
+          onPressed: _launchUrl,
           label: Text(
-            "Pilih Menu",
+            "Hubungi via WA",
             style: GoogleFonts.poppins(
               fontWeight: FontWeight.w600,
             ),
@@ -75,7 +69,7 @@ class _ReservationState extends State<Reservation> {
                     children: [
                       TextButton(
                         onPressed: () => {Navigator.pop(context, true)},
-                        child: Icon(
+                        child: const Icon(
                           Icons.keyboard_arrow_left,
                           color: Colors.black,
                           size: 32,
@@ -90,7 +84,7 @@ class _ReservationState extends State<Reservation> {
                       ),
                       TextButton(
                         onPressed: () => {},
-                        child: Icon(
+                        child: const Icon(
                           Icons.keyboard_arrow_left,
                           color: Colors.transparent,
                           size: 32,
@@ -110,7 +104,7 @@ class _ReservationState extends State<Reservation> {
                             Container(
                               width: 90,
                               child: Image(
-                                image: AssetImage("assets/mcd.png"),
+                                image: NetworkImage(widget.restaurant.picture),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -122,7 +116,7 @@ class _ReservationState extends State<Reservation> {
                                   Row(
                                     children: [
                                       Text(
-                                        "McDonald's",
+                                        "${widget.restaurant.name}",
                                         style: GoogleFonts.poppins(
                                           fontWeight: FontWeight.w600,
                                           fontSize: 18.0,
@@ -139,7 +133,7 @@ class _ReservationState extends State<Reservation> {
                                           color: Colors.grey[300],
                                         ),
                                         Text(
-                                          "Podomoro park",
+                                          "${widget.restaurant.location}",
                                           style: GoogleFonts.poppins(
                                             color: Colors.grey[500],
                                           ),
@@ -185,9 +179,11 @@ class _ReservationState extends State<Reservation> {
                         children: [
                           RoundedInputField(
                             ratioWidth: 0.846,
-                            hintText: "Your Email",
+                            hintText: "Your Name",
                             icon: Icons.person_rounded,
-                            onChanged: (value) {},
+                            onChanged: (value) {
+                              name = value;
+                            },
                           ),
                         ],
                       ),
@@ -196,9 +192,11 @@ class _ReservationState extends State<Reservation> {
                         children: [
                           RoundedInputField(
                             ratioWidth: 0.846,
-                            hintText: "Your Email",
+                            hintText: "Phone Number",
                             icon: Icons.phone_rounded,
-                            onChanged: (value) {},
+                            onChanged: (value) {
+                              phone = value;
+                            },
                           ),
                         ],
                       ),
@@ -209,7 +207,9 @@ class _ReservationState extends State<Reservation> {
                             ratioWidth: 0.846,
                             hintText: "Your Email",
                             icon: Icons.email_rounded,
-                            onChanged: (value) {},
+                            onChanged: (value) {
+                              email = value;
+                            },
                           ),
                         ],
                       ),
