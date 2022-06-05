@@ -6,6 +6,8 @@ import 'package:kuliner_go/components/rounded_button.dart';
 import 'package:kuliner_go/components/rounded_input_field.dart';
 import 'package:kuliner_go/components/rounded_password_field.dart';
 import 'package:auth_buttons/auth_buttons.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class Signup extends StatefulWidget {
   const Signup({Key? key}) : super(key: key);
@@ -15,6 +17,10 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+  late String email;
+  late String password;
+  late String username;
+  final FirebaseAuth auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     MediaQueryData _mediaQueryData = MediaQuery.of(context);
@@ -99,21 +105,33 @@ class _SignupState extends State<Signup> {
                           RoundedInputField(
                             hintText: "Your Name",
                             icon: Icons.person,
-                            onChanged: (value) {},
+                            onChanged: (value) {
+                              username = value.trim();
+                            },
                           ),
                           RoundedInputField(
                             hintText: "Your Email",
                             icon: Icons.email,
-                            onChanged: (value) {},
+                            onChanged: (value) {
+                              email = value.trim();
+                            },
                           ),
                           RoundedPasswordField(
-                            onChanged: (value) {},
+                            onChanged: (value) {
+                              password = value.trim();
+                            },
                           ),
                         ],
                       ),
                       RoundedButton(
                         text: "Daftar",
-                        press: () {},
+                        press: () {
+                          auth
+                              .createUserWithEmailAndPassword(
+                                  email: email, password: password)
+                              .then((_) => Navigator.pushNamed(
+                                  context, "/verivication"));
+                        },
                         height: screenHeight * 0.07,
                       ),
                       Text(

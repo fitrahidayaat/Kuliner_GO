@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kuliner_go/components/restaurant_card.dart';
+import 'package:kuliner_go/components/api_consumer.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'dart:async';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -10,8 +16,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  late Future<List<Restaurant>> restaurantList;
+  final FirebaseAuth auth = FirebaseAuth.instance;
   int _currentIndex = 0;
   Map data = {};
+  void initState() {
+    restaurantList = RestaurantApiConsumer().fetchRestaurants();
+  }
+
   @override
   Widget build(BuildContext context) {
     MediaQueryData _mediaQueryData = MediaQuery.of(context);
@@ -427,9 +439,28 @@ class _HomeState extends State<Home> {
                             ],
                           ),
                         ),
-                        RestaurantCard(nama: "Warunk Mulya"),
-                        RestaurantCard(nama: "Mororejo"),
-                        RestaurantCard(nama: "Ayam Crisbar"),
+                        // RestaurantCard(nama: "Warunk Mulya"),
+                        // RestaurantCard(nama: "Mororejo"),
+                        // RestaurantCard(nama: "Ayam Crisbar"),
+                        // Make restaurant cards from restaurant list
+                        FutureBuilder<List<Restaurant>>(
+                          future: restaurantList,
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              return SizedBox(
+                                height: screenHeight * 0.6,
+                                child: ListView.builder(
+                                  // scrollDirection: Axis.horizontal,
+                                  itemCount: snapshot.data!.length,
+                                  itemBuilder: (_, index) => RestaurantCard(
+                                      restaurant: snapshot.data![index]),
+                                ),
+                              );
+                            } else {
+                              return Center(child: CircularProgressIndicator());
+                            }
+                          },
+                        ),
                       ],
                     )),
               ],
@@ -505,9 +536,23 @@ class _HomeState extends State<Home> {
                     ),
                     child: Column(
                       children: [
-                        RestaurantCard(nama: "Warunk Mulya"),
-                        RestaurantCard(nama: "Mororejo"),
-                        RestaurantCard(nama: "Ayam Crisbar"),
+                        FutureBuilder<List<Restaurant>>(
+                          future: restaurantList,
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              return SizedBox(
+                                height: screenHeight * 0.75,
+                                child: ListView.builder(
+                                  itemCount: snapshot.data!.length,
+                                  itemBuilder: (_, index) => RestaurantCard(
+                                      restaurant: snapshot.data![index]),
+                                ),
+                              );
+                            } else {
+                              return Center(child: CircularProgressIndicator());
+                            }
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -990,7 +1035,10 @@ class _HomeState extends State<Home> {
                             ),
                             Center(
                               child: TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  auth.signOut().then((_) =>
+                                      Navigator.pushNamed(context, "/login"));
+                                },
                                 style: TextButton.styleFrom(
                                   backgroundColor: Colors.deepOrange,
                                   padding: EdgeInsets.fromLTRB(

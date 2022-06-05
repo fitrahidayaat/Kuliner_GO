@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kuliner_go/pages/detail_restaurant.dart';
+import 'package:kuliner_go/components/api_consumer.dart';
+import 'package:http/http.dart' as http;
 
 class RestaurantCard extends StatelessWidget {
-  final String nama;
+  final Restaurant restaurant;
+
   const RestaurantCard({
     Key? key,
-    required this.nama,
+    required this.restaurant,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -45,10 +48,10 @@ class RestaurantCard extends StatelessWidget {
                 children: [
                   Container(
                     padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
-                    child: Image.asset(
-                      "assets/${this.nama}.png",
-                      width: screenWidth * 0.225,
-                    ),
+                    child: Image(
+                      image: NetworkImage(this.restaurant.picture), 
+                      width:screenWidth*0.225
+                      ),
                   ),
                   Container(
                     height: screenWidth * 0.225,
@@ -58,7 +61,7 @@ class RestaurantCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(
-                          "${this.nama}",
+                          "${this.restaurant.name}",
                           style: GoogleFonts.poppins(
                             fontWeight: FontWeight.bold,
                             color: Colors.grey[800],
