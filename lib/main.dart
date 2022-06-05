@@ -51,7 +51,6 @@ class _KulnerGoState extends State<KulnerGo> {
         '/login': (context) => Login(),
         '/signup': (context) => Signup(),
         '/home': (context) => Home(),
-        '/detail': (context) => DetailRestaurant(),
         '/verification': (context) => Verifikasi(),
       },
     );
