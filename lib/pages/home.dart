@@ -15,6 +15,19 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
+<<<<<<< HEAD
+// Save restaurant list from api_consumer.dart to a variable
+List<Restaurant> restaurantList  = await
+    RestaurantApiConsumer().fetchRestaurants();
+
+// List<int> _list = <int>[];
+//   int operator [](int i) => _list[i];
+//   operator []=(int i, int value) => _list[i] = value;
+//   add(int value) => _list.add(value);
+//   remove(int index) => _list.removeAt(index);
+
+=======
+>>>>>>> 8afdf6d0c314a4df1540bb193a62991e816f7c14
 class _HomeState extends State<Home> {
   late Future<List<Restaurant>> restaurantList;
   final FirebaseAuth auth = FirebaseAuth.instance;

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:ui';
 import 'package:kuliner_go/components/already_have_an_account_acheck.dart';
@@ -21,6 +22,18 @@ class _SignupState extends State<Signup> {
   late String password;
   late String username;
   final FirebaseAuth auth = FirebaseAuth.instance;
+
+  _signup(String email, String password) async {
+    try {
+      await auth
+          .createUserWithEmailAndPassword(email: email, password: password)
+          .then((value) => Navigator.pushNamed(context, '/verification'));
+    } on FirebaseAuthException catch (error) {
+      Fluttertoast.showToast(
+          msg: error.message.toString(), gravity: ToastGravity.TOP);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     MediaQueryData _mediaQueryData = MediaQuery.of(context);
@@ -126,11 +139,7 @@ class _SignupState extends State<Signup> {
                       RoundedButton(
                         text: "Daftar",
                         press: () {
-                          auth
-                              .createUserWithEmailAndPassword(
-                                  email: email, password: password)
-                              .then((_) => Navigator.pushNamed(
-                                  context, "/verivication"));
+                          _signup(email, password);
                         },
                         height: screenHeight * 0.07,
                       ),
