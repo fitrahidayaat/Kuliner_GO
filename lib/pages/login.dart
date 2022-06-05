@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -25,9 +26,8 @@ class _LoginState extends State<Login> {
   _signin(String email, String password) async {
     try {
       //Create Get Firebase User
-      await auth
-          .signInWithEmailAndPassword(email: email, password: password)
-          .then((value) => Navigator.pushNamed(context, '/home'));
+      await auth.signInWithEmailAndPassword(email: email, password: password);
+      Navigator.pushNamed(context, '/home');
     } on FirebaseAuthException catch (error) {
       Fluttertoast.showToast(
           msg: error.message.toString(), gravity: ToastGravity.TOP);
@@ -198,4 +198,5 @@ class _LoginState extends State<Login> {
       ),
     );
   }
+
 }
