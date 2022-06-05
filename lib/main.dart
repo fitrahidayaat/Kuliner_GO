@@ -6,7 +6,7 @@ import 'package:kuliner_go/pages/home.dart';
 import 'package:kuliner_go/pages/detail_restaurant.dart';
 
 void main() => runApp(MaterialApp(
-      initialRoute: '/login',
+      initialRoute: '/home',
       routes: {
         '/': (context) => Onboard(),
         '/login': (context) => Login(),
