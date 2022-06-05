@@ -5,7 +5,6 @@ import 'package:kuliner_go/pages/onboard.dart';
 import 'package:kuliner_go/pages/login.dart';
 import 'package:kuliner_go/pages/signup.dart';
 import 'package:kuliner_go/pages/home.dart';
-import 'package:kuliner_go/pages/detail_restaurant.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:kuliner_go/pages/verification.dart';
@@ -13,17 +12,17 @@ import 'package:kuliner_go/pages/verification.dart';
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(KulnerGo());
+  runApp(KulinerGo());
 }
 
-class KulnerGo extends StatefulWidget {
-  const KulnerGo({Key? key}) : super(key: key);
+class KulinerGo extends StatefulWidget {
+  const KulinerGo({Key? key}) : super(key: key);
 
   @override
-  State<KulnerGo> createState() => _KulnerGoState();
+  State<KulinerGo> createState() => _KulinerGoState();
 }
 
-class _KulnerGoState extends State<KulnerGo> {
+class _KulinerGoState extends State<KulinerGo> {
   late StreamSubscription<User?> user;
   void initState() {
     super.initState();
