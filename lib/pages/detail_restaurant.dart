@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kuliner_go/components/api_consumer.dart';
 import 'package:kuliner_go/pages/reservation.dart';
-import 'package:kuliner_go/pages/review.dart';
+import 'package:kuliner_go/pages/review.dart' as card;
 
 class DetailRestaurant extends StatefulWidget {
-  const DetailRestaurant({Key? key}) : super(key: key);
+  final Restaurant restaurant;
+
+  const DetailRestaurant({
+    Key? key,
+    required this.restaurant,
+  }) : super(key: key);
 
   @override
   State<DetailRestaurant> createState() => _DetailRestaurantState();
@@ -91,7 +97,7 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
                 ),
                 Container(
                   child: Image(
-                    image: AssetImage("assets/mcd_profile.png"),
+                    image: NetworkImage(widget.restaurant.picture),
                     fit: BoxFit.cover,
                   ),
                   decoration: BoxDecoration(
@@ -112,7 +118,7 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                "McDonald's",
+                                "${widget.restaurant.name}",
                                 style: GoogleFonts.poppins(
                                   fontSize: 23,
                                   fontWeight: FontWeight.w600,
@@ -165,7 +171,7 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
                         Padding(
                           padding: EdgeInsets.fromLTRB(10.0, 6, 10.0, 10.0),
                           child: Text(
-                            "Franchise makanan cepat saji klasik yang telah lama berdiri, terkenal dengan burger dan kentang gorengnya",
+                            "${widget.restaurant.detail}",
                             style: GoogleFonts.poppins(
                               fontSize: 13.0,
                               color: Colors.grey[600],
@@ -393,7 +399,7 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
                                                         vertical: 8.0,
                                                         horizontal: 12.0),
                                                 child: Text(
-                                                  "4.7/5",
+                                                  "${widget.restaurant.rating}/5",
                                                   style: GoogleFonts.poppins(
                                                     fontSize: 20,
                                                     fontWeight: FontWeight.w600,
@@ -406,7 +412,7 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
                                                         vertical: 4.0,
                                                         horizontal: 12.0),
                                                 child: Text(
-                                                  "Berdasarkan 471 Ulasan",
+                                                  "Berdasarkan ${widget.restaurant.reviews.length} Ulasan",
                                                   style: GoogleFonts.poppins(
                                                     fontSize: 12.0,
                                                     color: Colors.grey[600],
@@ -450,7 +456,7 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => Review(),
+                                      builder: (context) => card.Review(),
                                     ),
                                   );
                                 },
