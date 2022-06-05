@@ -36,7 +36,11 @@ class RestaurantCard extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => DetailRestaurant()),
+                  MaterialPageRoute(
+                    builder: (context) => DetailRestaurant(
+                      restaurant: this.restaurant,
+                    ),
+                  ),
                 );
               },
               style: TextButton.styleFrom(
@@ -49,9 +53,8 @@ class RestaurantCard extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
                     child: Image(
-                      image: NetworkImage(this.restaurant.picture), 
-                      width:screenWidth*0.225
-                      ),
+                        image: NetworkImage(this.restaurant.picture),
+                        width: screenWidth * 0.225),
                   ),
                   Container(
                     height: screenWidth * 0.225,
@@ -84,7 +87,7 @@ class RestaurantCard extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    "4.8",
+                                    "${this.restaurant.rating}",
                                     style: GoogleFonts.poppins(
                                       fontSize: 12.0,
                                     ),
