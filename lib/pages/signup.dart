@@ -25,9 +25,8 @@ class _SignupState extends State<Signup> {
 
   _signup(String email, String password) async {
     try {
-      await auth
-          .createUserWithEmailAndPassword(email: email, password: password)
-          .then((value) => Navigator.pushNamed(context, '/verification'));
+      await auth.createUserWithEmailAndPassword(email: email, password: password);
+      Navigator.pushNamed(context, '/verification');
     } on FirebaseAuthException catch (error) {
       Fluttertoast.showToast(
           msg: error.message.toString(), gravity: ToastGravity.TOP);
