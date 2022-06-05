@@ -15,6 +15,7 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
+<<<<<<< HEAD
 // Save restaurant list from api_consumer.dart to a variable
 List<Restaurant> restaurantList  = await
     RestaurantApiConsumer().fetchRestaurants();
@@ -25,10 +26,17 @@ List<Restaurant> restaurantList  = await
 //   add(int value) => _list.add(value);
 //   remove(int index) => _list.removeAt(index);
 
+=======
+>>>>>>> 8afdf6d0c314a4df1540bb193a62991e816f7c14
 class _HomeState extends State<Home> {
+  late Future<List<Restaurant>> restaurantList;
   final FirebaseAuth auth = FirebaseAuth.instance;
   int _currentIndex = 0;
   Map data = {};
+  void initState() {
+    restaurantList = RestaurantApiConsumer().fetchRestaurants();
+  }
+
   @override
   Widget build(BuildContext context) {
     MediaQueryData _mediaQueryData = MediaQuery.of(context);
@@ -448,10 +456,24 @@ class _HomeState extends State<Home> {
                         // RestaurantCard(nama: "Mororejo"),
                         // RestaurantCard(nama: "Ayam Crisbar"),
                         // Make restaurant cards from restaurant list
-                        for (var i = 0; i < 5; i++)
-                          RestaurantCard(
-                            restaurant: restaurantList[i],
-                          ),
+                        FutureBuilder<List<Restaurant>>(
+                          future: restaurantList,
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              return SizedBox(
+                                height: screenHeight * 0.6,
+                                child: ListView.builder(
+                                  // scrollDirection: Axis.horizontal,
+                                  itemCount: snapshot.data!.length,
+                                  itemBuilder: (_, index) => RestaurantCard(
+                                      restaurant: snapshot.data![index]),
+                                ),
+                              );
+                            } else {
+                              return Center(child: CircularProgressIndicator());
+                            }
+                          },
+                        ),
                       ],
                     )),
               ],
@@ -527,9 +549,23 @@ class _HomeState extends State<Home> {
                     ),
                     child: Column(
                       children: [
-                        RestaurantCard(nama: "Warunk Mulya"),
-                        RestaurantCard(nama: "Mororejo"),
-                        RestaurantCard(nama: "Ayam Crisbar"),
+                        FutureBuilder<List<Restaurant>>(
+                          future: restaurantList,
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              return SizedBox(
+                                height: screenHeight * 0.75,
+                                child: ListView.builder(
+                                  itemCount: snapshot.data!.length,
+                                  itemBuilder: (_, index) => RestaurantCard(
+                                      restaurant: snapshot.data![index]),
+                                ),
+                              );
+                            } else {
+                              return Center(child: CircularProgressIndicator());
+                            }
+                          },
+                        ),
                       ],
                     ),
                   ),

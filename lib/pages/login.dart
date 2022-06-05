@@ -134,7 +134,7 @@ class _LoginState extends State<Login> {
                               .then(
                                   (_) => Navigator.pushNamed(context, '/home'));
                         },
-                        height: size.height * 0.07,
+                        height: screenHeight * 0.07,
                       ),
                       Text(
                         "masuk dengan",

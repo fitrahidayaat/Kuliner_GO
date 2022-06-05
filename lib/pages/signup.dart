@@ -132,7 +132,7 @@ class _SignupState extends State<Signup> {
                               .then((_) => Navigator.pushNamed(
                                   context, "/verivication"));
                         },
-                        height: size.height * 0.07,
+                        height: screenHeight * 0.07,
                       ),
                       Text(
                         "daftar dengan",

@@ -67,7 +67,7 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       TextButton(
-                        onPressed: () => {},
+                        onPressed: () => {Navigator.pop(context, true)},
                         child: Icon(
                           Icons.keyboard_arrow_left,
                           color: Colors.black,

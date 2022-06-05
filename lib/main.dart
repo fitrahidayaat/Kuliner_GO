@@ -11,15 +11,14 @@ Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   return runApp(MaterialApp(
-    initialRoute: '/',
+    initialRoute: '/home',
     routes: {
       '/': (context) => Onboard(),
       '/login': (context) => Login(),
       '/signup': (context) => Signup(),
       '/home': (context) => Home(),
       '/detail': (context) => DetailRestaurant(),
-      '/verivication' : (context) => Verifikasi(),
+      '/verivication': (context) => Verifikasi(),
     },
   ));
 }
-

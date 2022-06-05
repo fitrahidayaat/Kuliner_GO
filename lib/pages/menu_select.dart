@@ -58,7 +58,7 @@ class _MenuSelectState extends State<MenuSelect> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       TextButton(
-                        onPressed: () => {},
+                        onPressed: () => {Navigator.pop(context, true)},
                         child: Icon(
                           Icons.keyboard_arrow_left,
                           color: Colors.black,
@@ -66,7 +66,7 @@ class _MenuSelectState extends State<MenuSelect> {
                         ),
                       ),
                       Text(
-                        "Pesan Tempat",
+                        "Pilih Menu",
                         style: GoogleFonts.poppins(
                           fontWeight: FontWeight.w600,
                           fontSize: 16.0,
