@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kuliner_go/pages/add_review.dart';
+import 'package:kuliner_go/components/api_consumer.dart';
+import 'package:kuliner_go/components/review_card.dart';
 
-class Review extends StatefulWidget {
-  const Review({Key? key}) : super(key: key);
+class ReviewPage extends StatefulWidget {
+  final Restaurant restaurant;
+  const ReviewPage({Key? key, required this.restaurant}) : super(key: key);
 
   @override
-  State<Review> createState() => _ReviewState();
+  State<ReviewPage> createState() => _ReviewPageState();
 }
 
-class _ReviewState extends State<Review> {
+class _ReviewPageState extends State<ReviewPage> {
   @override
   Widget build(BuildContext context) {
     MediaQueryData _mediaQueryData = MediaQuery.of(context);
@@ -100,7 +103,7 @@ class _ReviewState extends State<Review> {
                                                         vertical: 8.0,
                                                         horizontal: 12.0),
                                                 child: Text(
-                                                  "4.7/5",
+                                                  "${widget.restaurant.rating}/5",
                                                   style: GoogleFonts.poppins(
                                                     fontSize: 20,
                                                     fontWeight: FontWeight.w600,
@@ -113,7 +116,7 @@ class _ReviewState extends State<Review> {
                                                         vertical: 4.0,
                                                         horizontal: 12.0),
                                                 child: Text(
-                                                  "Berdasarkan 471 Ulasan",
+                                                  "Berdasarkan ${widget.restaurant.reviews.length} Ulasan",
                                                   style: GoogleFonts.poppins(
                                                     fontSize: 12.0,
                                                     color: Colors.grey[600],
@@ -380,208 +383,14 @@ class _ReviewState extends State<Review> {
                                   ],
                                 ),
                               ),
-                              Container(
-                                margin: EdgeInsets.symmetric(vertical: 8.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 12.0,
-                                      ),
-                                      child: Container(
-                                        padding: EdgeInsets.all(17),
-                                        decoration: BoxDecoration(
-                                          color: Colors.grey[100],
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
-                                        child: Column(
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    CircleAvatar(
-                                                      backgroundImage:
-                                                          AssetImage(
-                                                        "assets/reviewprofilepict1.png",
-                                                      ),
-                                                      radius: 20,
-                                                    ),
-                                                    Padding(
-                                                      padding: const EdgeInsets
-                                                              .symmetric(
-                                                          horizontal: 15.0),
-                                                      child: Column(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Padding(
-                                                            padding: EdgeInsets
-                                                                .symmetric(
-                                                              vertical: 5.0,
-                                                            ),
-                                                            child: Text(
-                                                              "Magzy Bogues",
-                                                              style: GoogleFonts
-                                                                  .poppins(),
-                                                            ),
-                                                          ),
-                                                          Row(
-                                                            children: [
-                                                              Icon(
-                                                                Icons.star,
-                                                                size: 15.0,
-                                                              ),
-                                                              Icon(
-                                                                Icons.star,
-                                                                size: 15.0,
-                                                              ),
-                                                              Icon(
-                                                                Icons.star,
-                                                                size: 15.0,
-                                                              ),
-                                                              Icon(
-                                                                Icons.star,
-                                                                size: 15.0,
-                                                              ),
-                                                              Icon(
-                                                                Icons.star,
-                                                                size: 15.0,
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                top: 14.0,
-                                              ),
-                                              child: Row(
-                                                children: [
-                                                  Text(
-                                                    '"Penjual sangat ramah"',
-                                                    style: GoogleFonts.poppins(
-                                                      fontSize: 12,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.symmetric(vertical: 8.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 12.0,
-                                      ),
-                                      child: Container(
-                                        padding: EdgeInsets.all(17),
-                                        decoration: BoxDecoration(
-                                          color: Colors.grey[100],
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
-                                        child: Column(
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Row(
-                                                  children: [
-                                                    CircleAvatar(
-                                                      backgroundImage:
-                                                          AssetImage(
-                                                        "assets/reviewprofilepict1.png",
-                                                      ),
-                                                      radius: 20,
-                                                    ),
-                                                    Padding(
-                                                      padding: const EdgeInsets
-                                                              .symmetric(
-                                                          horizontal: 15.0),
-                                                      child: Column(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Padding(
-                                                            padding: EdgeInsets
-                                                                .symmetric(
-                                                              vertical: 5.0,
-                                                            ),
-                                                            child: Text(
-                                                              "Magzy Bogues",
-                                                              style: GoogleFonts
-                                                                  .poppins(),
-                                                            ),
-                                                          ),
-                                                          Row(
-                                                            children: [
-                                                              Icon(
-                                                                Icons.star,
-                                                                size: 15.0,
-                                                              ),
-                                                              Icon(
-                                                                Icons.star,
-                                                                size: 15.0,
-                                                              ),
-                                                              Icon(
-                                                                Icons.star,
-                                                                size: 15.0,
-                                                              ),
-                                                              Icon(
-                                                                Icons.star,
-                                                                size: 15.0,
-                                                              ),
-                                                              Icon(
-                                                                Icons.star,
-                                                                size: 15.0,
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                top: 14.0,
-                                              ),
-                                              child: Row(
-                                                children: [
-                                                  Text(
-                                                    '"Penjual sangat ramah"',
-                                                    style: GoogleFonts.poppins(
-                                                      fontSize: 12,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ],
+                              SizedBox(
+                                height: 0.6 * screenHeight,
+                                child: ListView.builder(
+                                  // scrollDirection: Axis.horizontal,
+                                  itemCount: widget.restaurant.reviews.length,
+                                  itemBuilder: (_, index) => ReviewCard(
+                                      restaurant:
+                                          widget.restaurant.reviews[index]),
                                 ),
                               ),
                               SizedBox(

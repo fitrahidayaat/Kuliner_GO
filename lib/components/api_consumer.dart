@@ -40,9 +40,10 @@ class Restaurant {
   final String phone;
   final List<dynamic> reviews;
   final String picture;
+  final String openHours;
 
   Restaurant(this._id, this.name, this.location, this.detail, this.harga,
-      this.rating, this.phone, this.reviews, this.picture);
+      this.rating, this.phone, this.reviews, this.picture, this.openHours);
 
   factory Restaurant.fromJson(Map<String, dynamic> json) {
     return Restaurant(
@@ -55,6 +56,7 @@ class Restaurant {
       json['phone'] as String,
       json['reviews'] as List<dynamic>,
       json['picture'] as String,
+      json['openHours'] as String,
     );
   }
 }

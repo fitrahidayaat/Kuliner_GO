@@ -5,11 +5,11 @@ import 'package:kuliner_go/pages/reservation.dart';
 // import 'package:kuliner_go/pages/review.dart' as card;
 
 class ReviewCard extends StatelessWidget {
-  final Review review;
+  final restaurant;
 
   const ReviewCard({
     Key? key,
-    required this.review,
+    required this.restaurant,
   }) : super(key: key);
 
   @override
@@ -36,7 +36,8 @@ class ReviewCard extends StatelessWidget {
                       Row(
                         children: [
                           CircleAvatar(
-                            backgroundImage: NetworkImage(this.review.picture),
+                            backgroundImage:
+                                NetworkImage(this.restaurant['picture']),
                             radius: 20,
                           ),
                           Padding(
@@ -50,7 +51,7 @@ class ReviewCard extends StatelessWidget {
                                     vertical: 5.0,
                                   ),
                                   child: Text(
-                                    "${this.review.username}",
+                                    "${this.restaurant['username']}",
                                     style: GoogleFonts.poppins(),
                                   ),
                                 ),
@@ -85,21 +86,16 @@ class ReviewCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 14.0,
+                  SizedBox(height: 7.0),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      '${this.restaurant['comment']}',
+                      style: GoogleFonts.poppins(
+                        fontSize: 12,
+                      ),
                     ),
-                    child: Row(
-                      children: [
-                        Text(
-                          '"${this.review.comment}"',
-                          style: GoogleFonts.poppins(
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
+                  ),
                 ],
               ),
             ),

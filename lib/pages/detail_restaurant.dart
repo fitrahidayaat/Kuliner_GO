@@ -1,8 +1,10 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kuliner_go/components/api_consumer.dart';
 import 'package:kuliner_go/pages/reservation.dart';
-import 'package:kuliner_go/pages/review.dart' as card;
+import 'package:kuliner_go/pages/review_page.dart';
 import 'package:kuliner_go/components/review_card.dart';
 
 class DetailRestaurant extends StatefulWidget {
@@ -18,10 +20,8 @@ class DetailRestaurant extends StatefulWidget {
 }
 
 class _DetailRestaurantState extends State<DetailRestaurant> {
-  late Future<List<Review>> reviewList;
-  void initState() {
-    reviewList = ReviewApiConsumer().fetchReviews();
-  }
+  bool jamBuka = false;
+  bool kisaranHarga = false, daftarMenu = false, alamatRestoran = false;
 
   @override
   Widget build(BuildContext context) {
@@ -41,33 +41,33 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      // floatingActionButton: Column(
-      //   mainAxisAlignment: MainAxisAlignment.end,
-      //   crossAxisAlignment: CrossAxisAlignment.end,
-      //   children: [
-      //     FloatingActionButton(
-      //       onPressed: () {},
-      //       child: Icon(
-      //         Icons.phone,
-      //         color: Colors.white,
-      //       ),
-      //     ),
-      //     Container(
-      //       width: screenWidth * 0.9,
-      //       margin: EdgeInsets.fromLTRB(0, 12, 0, 0),
-      //       child: FloatingActionButton.extended(
-      //         backgroundColor: Colors.blue,
-      //         onPressed: () {
-      //           Navigator.push(
-      //             context,
-      //             MaterialPageRoute(builder: (context) => Reservation()),
-      //           );
-      //         },
-      //         label: Text("Pesan Tempat"),
-      //       ),
-      //     )
-      //   ],
-      // ),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            onPressed: () {},
+            child: Icon(
+              Icons.phone,
+              color: Colors.white,
+            ),
+          ),
+          Container(
+            width: screenWidth * 0.9,
+            margin: EdgeInsets.fromLTRB(0, 12, 0, 0),
+            child: FloatingActionButton.extended(
+              backgroundColor: Colors.blue,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Reservation()),
+                );
+              },
+              label: Text("Pesan Tempat"),
+            ),
+          )
+        ],
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
@@ -188,7 +188,11 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
                           child: Column(
                             children: [
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    jamBuka = jamBuka ? false : true;
+                                  });
+                                },
                                 child: Container(
                                   // color: Colors.amber,
                                   height: 43.0,
@@ -222,8 +226,34 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
                                   ),
                                 ),
                               ),
+                              Visibility(
+                                maintainAnimation: true,
+                                maintainState: true,
+                                visible: jamBuka,
+                                child: Container(
+                                  height: 43.0,
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 10.0),
+                                        child: Text(
+                                          '${widget.restaurant.openHours}',
+                                          style: GoogleFonts.poppins(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 16),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    kisaranHarga = kisaranHarga ? false : true;
+                                  });
+                                },
                                 child: Container(
                                   // color: Colors.amber,
                                   height: 43.0,
@@ -257,8 +287,34 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
                                   ),
                                 ),
                               ),
+                              Visibility(
+                                maintainAnimation: true,
+                                maintainState: true,
+                                visible: kisaranHarga,
+                                child: Container(
+                                  height: 43.0,
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 10.0),
+                                        child: Text(
+                                          '${widget.restaurant.harga}',
+                                          style: GoogleFonts.poppins(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 16),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    daftarMenu = daftarMenu ? false : true;
+                                  });
+                                },
                                 child: Container(
                                   // color: Colors.amber,
                                   height: 43.0,
@@ -292,8 +348,36 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
                                   ),
                                 ),
                               ),
+                              Visibility(
+                                maintainAnimation: true,
+                                maintainState: true,
+                                visible: daftarMenu,
+                                child: Container(
+                                  height: 43.0,
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 10.0),
+                                        child: Text(
+                                          '${widget.restaurant.openHours}',
+                                          style: GoogleFonts.poppins(
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  setState(() {
+                                    alamatRestoran =
+                                        alamatRestoran ? false : true;
+                                  });
+                                },
                                 child: Container(
                                   // color: Colors.amber,
                                   height: 43.0,
@@ -327,37 +411,25 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
                                   ),
                                 ),
                               ),
-                              TextButton(
-                                onPressed: () {},
+                              Visibility(
+                                maintainAnimation: true,
+                                maintainState: true,
+                                visible: alamatRestoran,
                                 child: Container(
-                                  // color: Colors.amber,
                                   height: 43.0,
                                   child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Row(
-                                        children: [
-                                          Icon(
-                                            Icons.more_horiz_sharp,
-                                            color: Colors.black,
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 10.0),
+                                        child: Text(
+                                          '${widget.restaurant.location}',
+                                          style: GoogleFonts.poppins(
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 16,
                                           ),
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                              horizontal: 10.0,
-                                            ),
-                                            child: Text(
-                                              "Fasilitas",
-                                              style: GoogleFonts.poppins(
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
+                                        ),
                                       ),
-                                      Icon(Icons.keyboard_arrow_down,
-                                          color: Colors.grey[350]),
                                     ],
                                   ),
                                 ),
@@ -462,7 +534,9 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => card.Review(),
+                                      builder: (context) => ReviewPage(
+                                        restaurant: widget.restaurant,
+                                      ),
                                     ),
                                   );
                                 },
@@ -498,25 +572,15 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
                                   ),
                                 ),
                               ),
-                              FutureBuilder<List<Review>>(
-                                future: reviewList,
-                                builder: (context, snapshot) {
-                                  if (snapshot.hasData) {
-                                    return SizedBox(
-                                      height: 600,
-                                      child: ListView.builder(
-                                        // scrollDirection: Axis.horizontal,
-                                        itemCount: snapshot.data!.length,
-                                        itemBuilder: (_, index) => ReviewCard(
-                                            review: snapshot.data![index]),
-                                      ),
-                                    );
-                                  } else {
-                                    return Center(
-                                      child: CircularProgressIndicator(),
-                                    );
-                                  }
-                                },
+                              SizedBox(
+                                height: 0.6 * screenHeight,
+                                child: ListView.builder(
+                                  // scrollDirection: Axis.horizontal,
+                                  itemCount: widget.restaurant.reviews.length,
+                                  itemBuilder: (_, index) => ReviewCard(
+                                      restaurant:
+                                          widget.restaurant.reviews[index]),
+                                ),
                               ),
                               SizedBox(
                                 height: 80,

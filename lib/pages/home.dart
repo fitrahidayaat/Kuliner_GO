@@ -762,7 +762,7 @@ class _HomeState extends State<Home> {
                               backgroundColor: Colors.white,
                               child: CircleAvatar(
                                 backgroundImage:
-                                    AssetImage("assets/Ayam Crisbar.png"),
+                                    AssetImage("assets/profilePict.png"),
                                 radius: 50,
                               ),
                             ),
