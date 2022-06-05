@@ -15,6 +15,15 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
+// Save restaurant list from api_consumer.dart to a variable
+Future<List<Restaurant>> restaurantList() async =>
+    await RestaurantApiConsumer().fetchRestaurants();
+
+// List<int> _list = <int>[];
+//   int operator [](int i) => _list[i];
+//   operator []=(int i, int value) => _list[i] = value;
+//   add(int value) => _list.add(value);
+//   remove(int index) => _list.removeAt(index);
 class _HomeState extends State<Home> {
   late Future<List<Restaurant>> restaurantList;
 
