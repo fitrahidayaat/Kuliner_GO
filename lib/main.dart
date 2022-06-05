@@ -43,8 +43,7 @@ class _KulinerGoState extends State<KulinerGo> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute:
-          FirebaseAuth.instance.currentUser == null ? "/login" : "/home",
+      initialRoute: FirebaseAuth.instance.currentUser == null ? "/" : "/home",
       routes: {
         '/': (context) => Onboard(),
         '/login': (context) => Login(),

@@ -27,133 +27,131 @@ class RestaurantCard extends StatelessWidget {
       return (inputWidth / 375.0) * screenWidth;
     }
 
-    return Container(
-      child: Column(
-        children: [
-          Container(
-            padding: EdgeInsets.fromLTRB(0, 17, 0, 17),
-            child: TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => DetailRestaurant(
-                      restaurant: this.restaurant,
-                    ),
+    return Column(
+      children: [
+        Container(
+          padding: EdgeInsets.fromLTRB(0, 17, 0, 17),
+          child: TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailRestaurant(
+                    restaurant: this.restaurant,
                   ),
-                );
-              },
-              style: TextButton.styleFrom(
-                padding: EdgeInsets.all(0),
-                primary: Colors.grey[400],
-                elevation: 0,
-              ),
-              child: Row(
-                children: [
-                  Container(
-                    padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
-                    child: Image(
-                        image: NetworkImage(this.restaurant.picture),
-                        width: screenWidth * 0.225),
-                  ),
-                  Container(
-                    height: screenWidth * 0.225,
-                    width: screenWidth * 0.52,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text(
-                          "${this.restaurant.name}",
-                          style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.grey[800],
-                          ),
+                ),
+              );
+            },
+            style: TextButton.styleFrom(
+              padding: EdgeInsets.all(0),
+              primary: Colors.grey[400],
+              elevation: 0,
+            ),
+            child: Row(
+              children: [
+                Container(
+                  padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                  child: Image(
+                      image: NetworkImage(this.restaurant.picture),
+                      width: screenWidth * 0.225),
+                ),
+                Container(
+                  height: screenWidth * 0.225,
+                  width: screenWidth * 0.52,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text(
+                        "${this.restaurant.name}",
+                        style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey[800],
                         ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 0, 30.0, 0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(0, 0, 3, 0),
-                                    child: Icon(
-                                      Icons.star,
-                                      color: Colors.amber,
-                                      size: 20.0,
-                                    ),
-                                  ),
-                                  Text(
-                                    "${this.restaurant.rating}",
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 12.0,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(0, 0, 3, 0),
-                                    child: Icon(
-                                      Icons.location_on,
-                                      size: 20.0,
-                                    ),
-                                  ),
-                                  Text(
-                                    "0,6 km",
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 12.0,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Text(
-                                    "\$\$\$\$",
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 12.0,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        Row(
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 0, 30.0, 0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 0, 7.0, 0),
-                              child: Icon(
-                                Icons.access_time_filled_rounded,
-                                size: 20.0,
-                                color: Colors.grey[350],
-                              ),
+                            Row(
+                              children: [
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(0, 0, 3, 0),
+                                  child: Icon(
+                                    Icons.star,
+                                    color: Colors.amber,
+                                    size: 20.0,
+                                  ),
+                                ),
+                                Text(
+                                  "${this.restaurant.rating}",
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 12.0,
+                                  ),
+                                ),
+                              ],
                             ),
-                            Text(
-                              "Buka sekarang",
-                              style: GoogleFonts.poppins(
-                                color: Colors.blue,
-                                fontSize: 13.0,
-                                fontWeight: FontWeight.w500,
-                              ),
+                            Row(
+                              children: [
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(0, 0, 3, 0),
+                                  child: Icon(
+                                    Icons.location_on,
+                                    size: 20.0,
+                                  ),
+                                ),
+                                Text(
+                                  "0,6 km",
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 12.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  "\$\$\$\$",
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 12.0,
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
-                      ],
-                    ),
+                      ),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 0, 7.0, 0),
+                            child: Icon(
+                              Icons.access_time_filled_rounded,
+                              size: 20.0,
+                              color: Colors.grey[350],
+                            ),
+                          ),
+                          Text(
+                            "Buka sekarang",
+                            style: GoogleFonts.poppins(
+                              color: Colors.blue,
+                              fontSize: 13.0,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

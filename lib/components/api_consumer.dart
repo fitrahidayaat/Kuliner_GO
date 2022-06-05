@@ -139,16 +139,21 @@ class ReviewApiConsumer {
 class Review {
   final String _id;
   final String user;
+  final String username;
+  final String picture;
   final String restaurant;
   final double rating;
   final String comment;
 
-  Review(this._id, this.user, this.restaurant, this.rating, this.comment);
+  Review(this._id, this.user, this.username, this.picture, this.restaurant,
+      this.rating, this.comment);
 
   factory Review.fromJson(Map<String, dynamic> json) {
     return Review(
       json['_id'] as String,
       json['user'] as String,
+      json['username'] as String,
+      json['picture'] as String,
       json['restaurant'] as String,
       json['rating'] as double,
       json['comment'] as String,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kuliner_go/components/api_consumer.dart';
 import 'package:kuliner_go/pages/reservation.dart';
-import 'package:kuliner_go/pages/review.dart' as card;
+// import 'package:kuliner_go/pages/review.dart' as card;
 
 class ReviewCard extends StatelessWidget {
   final Review review;
@@ -36,9 +36,7 @@ class ReviewCard extends StatelessWidget {
                       Row(
                         children: [
                           CircleAvatar(
-                            backgroundImage: AssetImage(
-                              "assets/reviewprofilepict1.png",
-                            ),
+                            backgroundImage: NetworkImage(this.review.picture),
                             radius: 20,
                           ),
                           Padding(
@@ -52,7 +50,7 @@ class ReviewCard extends StatelessWidget {
                                     vertical: 5.0,
                                   ),
                                   child: Text(
-                                    "${this.review.user}",
+                                    "${this.review.username}",
                                     style: GoogleFonts.poppins(),
                                   ),
                                 ),

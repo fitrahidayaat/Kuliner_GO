@@ -16,8 +16,6 @@ class Home extends StatefulWidget {
 }
 
 // Save restaurant list from api_consumer.dart to a variable
-Future<List<Restaurant>> restaurantList() async =>
-    await RestaurantApiConsumer().fetchRestaurants();
 
 // List<int> _list = <int>[];
 //   int operator [](int i) => _list[i];

@@ -21,7 +21,6 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
   late Future<List<Review>> reviewList;
   void initState() {
     reviewList = ReviewApiConsumer().fetchReviews();
-    super.initState();
   }
 
   @override
@@ -42,33 +41,33 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            onPressed: () {},
-            child: Icon(
-              Icons.phone,
-              color: Colors.white,
-            ),
-          ),
-          Container(
-            width: screenWidth * 0.9,
-            margin: EdgeInsets.fromLTRB(0, 12, 0, 0),
-            child: FloatingActionButton.extended(
-              backgroundColor: Colors.blue,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Reservation()),
-                );
-              },
-              label: Text("Pesan Tempat"),
-            ),
-          )
-        ],
-      ),
+      // floatingActionButton: Column(
+      //   mainAxisAlignment: MainAxisAlignment.end,
+      //   crossAxisAlignment: CrossAxisAlignment.end,
+      //   children: [
+      //     FloatingActionButton(
+      //       onPressed: () {},
+      //       child: Icon(
+      //         Icons.phone,
+      //         color: Colors.white,
+      //       ),
+      //     ),
+      //     Container(
+      //       width: screenWidth * 0.9,
+      //       margin: EdgeInsets.fromLTRB(0, 12, 0, 0),
+      //       child: FloatingActionButton.extended(
+      //         backgroundColor: Colors.blue,
+      //         onPressed: () {
+      //           Navigator.push(
+      //             context,
+      //             MaterialPageRoute(builder: (context) => Reservation()),
+      //           );
+      //         },
+      //         label: Text("Pesan Tempat"),
+      //       ),
+      //     )
+      //   ],
+      // ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
@@ -514,7 +513,8 @@ class _DetailRestaurantState extends State<DetailRestaurant> {
                                     );
                                   } else {
                                     return Center(
-                                        child: CircularProgressIndicator());
+                                      child: CircularProgressIndicator(),
+                                    );
                                   }
                                 },
                               ),
