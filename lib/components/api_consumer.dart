@@ -1,12 +1,12 @@
+import 'dart:async';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
 // Consume API from https://kulinergo.herokuapp.com/restaurants
 
 // The API will return a list of restaurants
 // Restaurant example in JSON
 // {"_id":"62996f6cc282bae78541035b","name":"McDonald's","location":"Cibaduyut","detail":"McDonald's adalah sebuah perusahaan yang bergerak di bidang fast food dan kopi. Didirikan pada tahun 1940, McDonald's merupakan perusahaan pertama di Indonesia yang menjual berbagai macam makanan dan minuman.","harga":"Rp.25.000 - Rp.100.000","rating":4.5,"phone":"0812-1234-1234","reviews":[],"picture":"http://assets.kompasiana.com/items/album/2020/10/12/mcdonalds-5f8468188ede48780604a122.jpg","__v":0}
-
-import 'dart:async';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 
 class RestaurantApiConsumer {
   static final Uri _baseUrl = Uri.https('kulinergo.herokuapp.com', '/restaurants');

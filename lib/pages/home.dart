@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kuliner_go/components/restaurant_card.dart';
+import 'package:kuliner_go/components/api_consumer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'dart:async';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -10,6 +14,16 @@ class Home extends StatefulWidget {
   @override
   State<Home> createState() => _HomeState();
 }
+
+// Save restaurant list from api_consumer.dart to a variable
+List<Restaurant> restaurantList = await
+    RestaurantApiConsumer().fetchRestaurants();
+
+// List<int> _list = <int>[];
+//   int operator [](int i) => _list[i];
+//   operator []=(int i, int value) => _list[i] = value;
+//   add(int value) => _list.add(value);
+//   remove(int index) => _list.removeAt(index);
 
 class _HomeState extends State<Home> {
   final FirebaseAuth auth = FirebaseAuth.instance;
@@ -430,9 +444,14 @@ class _HomeState extends State<Home> {
                             ],
                           ),
                         ),
-                        RestaurantCard(nama: "Warunk Mulya"),
-                        RestaurantCard(nama: "Mororejo"),
-                        RestaurantCard(nama: "Ayam Crisbar"),
+                        // RestaurantCard(nama: "Warunk Mulya"),
+                        // RestaurantCard(nama: "Mororejo"),
+                        // RestaurantCard(nama: "Ayam Crisbar"),
+                        // Make restaurant cards from restaurant list
+                        for (var i = 0; i < 5; i++)
+                          RestaurantCard(
+                            restaurant: restaurantList[i],
+                          ),
                       ],
                     )),
               ],
