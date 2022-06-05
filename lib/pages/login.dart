@@ -29,7 +29,8 @@ class _LoginState extends State<Login> {
           .signInWithEmailAndPassword(email: email, password: password)
           .then((value) => Navigator.pushNamed(context, '/home'));
     } on FirebaseAuthException catch (error) {
-      Fluttertoast.showToast(msg: error.message.toString(), gravity: ToastGravity.TOP);
+      Fluttertoast.showToast(
+          msg: error.message.toString(), gravity: ToastGravity.TOP);
     }
   }
 
@@ -128,11 +129,7 @@ class _LoginState extends State<Login> {
                       RoundedButton(
                         text: "Masuk",
                         press: () {
-                          auth
-                              .signInWithEmailAndPassword(
-                                  email: email, password: password)
-                              .then(
-                                  (_) => Navigator.pushNamed(context, '/home'));
+                          _signin(email, password);
                         },
                         height: screenHeight * 0.07,
                       ),
